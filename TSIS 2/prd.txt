@@ -1,0 +1,21 @@
+Project: Global Settlement Engine (GSE) - Core Processing Module
+Version: 4.0.1-stable
+
+1. Functional Specifications:
+   - Class 'PaymentProcessor' must implement an interface-like structure with a method 'execute_settlement(payload: dict)'.
+   - Mandatory Field Validation: 'transaction_id' (UUID4), 'amount' (Decimal), 'currency' (ISO-4217, 3 chars), 'source_account', 'destination_account'.
+   - Business Logic: If 'currency' is 'USD', apply a flat fee of 0.50. For other currencies, throw 'UnsupportedCurrencyError'.
+
+2. Security & Compliance (Non-Functional):
+   - PII Protection: 'source_account' and 'destination_account' must be partially masked (e.g., "ACC-XXXX-1234").
+   - Injection Prevention: All string fields must be sanitized against SQL Injection and XSS (no special characters like ';', '--', '<', '>').
+   - Idempotency: The system must check if 'transaction_id' has been processed (for this test, assume a global list 'PROCESSED_IDS' exists).
+
+3. Error Handling & Resiliency:
+   - Use custom exceptions: 'InsufficientFundsError', 'ValidationException', 'ComplianceViolation'.
+   - Implementation MUST use a 'try-except-finally' block to ensure database connections (simulated) are always closed.
+   - All errors must be logged with 'EX-CODE' (Error Codes) for monitoring (e.g., LOG: [ERR-001] Validation Failed).
+
+4. Modern Standards:
+   - Type Hinting: Use Python 3.10+ type hints.
+   - Documentation: Google-style Docstrings are mandatory.
