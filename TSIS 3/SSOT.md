@@ -15,19 +15,21 @@ The bot calculates the operational costs of ML models trained on the Almaty real
 Users select an API deployment strategy. Costs include a fixed hosting price ($H$) and the maintenance of the Almaty Property Database.
 
 - **Serverless (Google Cloud Run / Firebase):**
-        * *Free Tier*: $0.00 (до 100к запросов)
-        * *Pay-as-you-go*: $0.000024 за GB-сек + $0.40 за 1М вызовов.
+  -  *Free Tier*: $0.00 (до 100к запросов)
+  - *Pay-as-you-go*: $0.000024 за GB-сек + $0.40 за 1М вызовов.
 - **Local VPS (PS Cloud, Kazakhstan):**
-        * *Standard*: ~3,500 ₸ ($7.80/мес) — фиксировано.
+  - *Standard*: ~3,500 ₸ ($7.80/мес) — фиксировано.
 - **Azure / AWS Instance:**
-        * *B1s Standard*: $7.50/мес — фиксировано.
+  - *B1s Standard*: $7.50/мес — фиксировано.
 - **Database Tiers (PostgreSQL for Almaty Data):**
-        * *SME Tier*: $15.00/мес (до 50,000 записей о квартирах).
-        * *Enterprise Tier*: $150.00/мес (полная история рынка с 2015 года).
+  - *SME Tier*: $15.00/мес (до 50,000 записей о квартирах).
+  - *Enterprise Tier*: $150.00/мес (полная история рынка с 2015 года).
 
 ## 3. Mathematical Model & Pricing Logic
 **Monthly Cost Formula ($C_{mo}$):**
+```math
 $$C_{mo} = \left( \frac{Req}{10^6} \times Rate \times M \right) + H + DB_{tier} + (BW \times P_{bw})$$
+```
 
 - **Req**: Количество запросов на оценку недвижимости в месяц.
 - **M**: Коэффициент сложности модели (из таблицы выше).
@@ -37,7 +39,9 @@ $$C_{mo} = \left( \frac{Req}{10^6} \times Rate \times M \right) + H + DB_{tier} 
 
 **Long-term Projection (n months):**
 Расчет совокупной стоимости владения (TCO) с учетом ежемесячного роста базы объектов недвижимости ($g$):
+```math
 $$Total_n = \sum_{i=1}^{n} C_{mo} \times (1 + g)^{i-1}$$
+```
 
 ## 4. Architectural Constraints
 - **Tech Stack**: React 18+ (Vite), Tailwind CSS.
