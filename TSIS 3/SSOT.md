@@ -13,14 +13,15 @@ The bot calculates the operational costs of ML models trained on the Almaty real
 
 ## 2. Infrastructure Components (Cloud & DB Tiers)
 Users select an API deployment strategy. Costs include a fixed hosting price ($H$) and the maintenance of the Almaty Property Database.
-    - **Serverless (Google Cloud Run / Firebase):**
+
+    * **Serverless (Google Cloud Run / Firebase):**
         * *Free Tier*: $0.00 (до 100к запросов)
         * *Pay-as-you-go*: $0.000024 за GB-сек + $0.40 за 1М вызовов.
-    - **Local VPS (PS Cloud, Kazakhstan):**
+    * **Local VPS (PS Cloud, Kazakhstan):**
         * *Standard*: ~3,500 ₸ ($7.80/мес) — фиксировано.
-    - **Azure / AWS Instance:**
+    * **Azure / AWS Instance:**
         * *B1s Standard*: $7.50/мес — фиксировано.
-    - **Database Tiers (PostgreSQL for Almaty Data):**
+    * **Database Tiers (PostgreSQL for Almaty Data):**
         * *SME Tier*: $15.00/мес (до 50,000 записей о квартирах).
         * *Enterprise Tier*: $150.00/мес (полная история рынка с 2015 года).
 
