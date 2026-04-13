@@ -1,0 +1,52 @@
+/* AuraAudit SME - Global Styles */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap');
+
+html, body, [class*="css"] {
+    font-family: 'Inter', sans-serif;
+    background-color: #0f172a; /* Slate 900 */
+    color: #f1f5f9;
+}
+
+.stApp {
+    background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+}
+
+.main-header {
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(10px);
+    border-radius: 15px;
+    padding: 2rem;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    margin-bottom: 2rem;
+    text-align: center;
+}
+
+.stat-card {
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 12px;
+    padding: 1.5rem;
+    transition: transform 0.3s ease;
+}
+
+.stat-card:hover {
+    transform: translateY(-5px);
+    background: rgba(255, 255, 255, 0.05);
+}
+
+.status-passed {
+    color: #10b981; /* Emerald 500 */
+    font-weight: 700;
+}
+
+.status-failed {
+    color: #f43f5e; /* Rose 500 */
+    font-weight: 700;
+}
+
+.audit-container {
+    padding: 1.5rem;
+    border-left: 4px solid #3b82f6;
+    background: rgba(59, 130, 246, 0.05);
+    margin-bottom: 1rem;
+}
